@@ -110,9 +110,9 @@ export class PapiClient {
         if (this.options.actionUUID) {
             options.headers['X-Pepperi-ActionID'] = this.options.actionUUID;
         }
-        const t0 = papi_performance.now();
+        const t0 = papi_performance ? papi_performance.now() : 0;
         const res = await papi_fetch(fullURL, options);
-        const t1 = papi_performance.now();
+        const t1 = papi_performance ? papi_performance.now() : 0;
 
         if (!this.options.suppressLogging) {
             console.log(method, fullURL, 'took', (t1 - t0).toFixed(2), 'milliseconds');
